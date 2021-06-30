@@ -1,4 +1,5 @@
 import express from 'express';
+
 const app = express();
 const getYear = (date: Date): string => {
   return `${date.getFullYear()}`;
