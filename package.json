@@ -4,8 +4,15 @@
   "author": "Daniel Hausner",
   "license": "MIT",
   "private": true,
-  "workspaces": ["packages/*"],
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
-    "dashboard": "yarn workspace @subly-analytics-dashboard/dashboard start"
+    "dashboard": "yarn workspace @subly-analytics-dashboard/dashboard start",
+    "prettier": "prettier 'packages/**/src/**/*.ts'",
+    "prettier:fix": "prettier --write 'packages/**/src/**/*.ts'"
+  },
+  "devDependencies": {
+    "prettier": "2.3.2"
   }
 }
