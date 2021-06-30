@@ -1,0 +1,11 @@
+{
+  "name": "subly-analytics-dashboard",
+  "version": "1.0.0",
+  "author": "Daniel Hausner",
+  "license": "MIT",
+  "private": true,
+  "workspaces": ["dashboard", "server"],
+  "scripts": {
+    "dashboard": "yarn workspace dashboard start"
+  }
+}
