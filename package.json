@@ -4,8 +4,8 @@
   "author": "Daniel Hausner",
   "license": "MIT",
   "private": true,
-  "workspaces": ["dashboard", "server"],
+  "workspaces": ["packages/*"],
   "scripts": {
-    "dashboard": "yarn workspace dashboard start"
+    "dashboard": "yarn workspace packages/dashboard start"
   }
 }

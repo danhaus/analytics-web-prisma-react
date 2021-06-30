@@ -1,5 +1,5 @@
 {
-  "name": "dashboard",
+  "name": "@subly-analytics-dashboard/dashboard",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -17,10 +17,10 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "node_modules/.bin/react-scripts start",
+    "build": "node_modules/.bin/react-scripts build",
+    "test": "node_modules/.bin/react-scripts test",
+    "eject": "node_modules/.bin/react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
