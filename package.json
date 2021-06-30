@@ -1,5 +1,5 @@
 {
-  "name": "subly-analytics-dashboard",
+  "name": "analytics-dashboard-express-react",
   "version": "1.0.0",
   "author": "Daniel Hausner",
   "license": "MIT",
@@ -8,7 +8,7 @@
     "packages/*"
   ],
   "scripts": {
-    "dashboard": "yarn workspace @subly-analytics-dashboard/dashboard start",
+    "dashboard": "yarn workspace @analytics-dashboard-express-react/dashboard start",
     "prettier": "prettier 'packages/**/src/**/*.ts'",
     "prettier:fix": "prettier --write 'packages/**/src/**/*.ts'"
   },
