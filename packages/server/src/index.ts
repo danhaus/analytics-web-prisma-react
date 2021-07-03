@@ -1,5 +1,6 @@
 import express from 'express';
 import cors from 'cors';
+import userRoutes from './routes/user.routes';
 
 const app = express();
 
@@ -15,13 +16,10 @@ app.use(express.json());
 // Parse requests of content-type - application/x-www-form-urlencoded
 app.use(express.urlencoded({ extended: true }));
 
-const getYear = (date: Date): string => {
-  return `${date.getFullYear()}`;
-};
+app.use('/user', userRoutes);
 
 app.get('/', (req, res) => {
-  const year = getYear(new Date());
-  res.json({ message: `Hello World ! ${year}` });
+  res.json({ message: `Hello World!` });
 });
 
 // Set port, listen for requests
