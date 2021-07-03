@@ -8,6 +8,7 @@
     "build": "tsc",
     "start": "NODE_ENV=production node ./build/index.js",
     "dev": "ts-node-dev --respawn --transpile-only ./src/index.ts",
+    "test": "jest -i",
     "prisma:format": "npx prisma format"
   },
   "devDependencies": {
