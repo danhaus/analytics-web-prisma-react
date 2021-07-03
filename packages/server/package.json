@@ -7,7 +7,8 @@
   "scripts": {
     "build": "tsc",
     "start": "NODE_ENV=production node ./build/index.js",
-    "dev": "ts-node-dev --respawn --transpile-only ./src/index.ts"
+    "dev": "ts-node-dev --respawn --transpile-only ./src/index.ts",
+    "prisma:format": "npx prisma format"
   },
   "devDependencies": {
     "@types/cors": "^2.8.10",
@@ -18,6 +19,7 @@
     "typescript": "^4.3.4"
   },
   "dependencies": {
+    "@prisma/client": "^2.26.0",
     "cors": "^2.8.5",
     "express": "^4.17.1"
   }

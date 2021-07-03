@@ -9,3 +9,24 @@ datasource db {
 generator client {
   provider = "prisma-client-js"
 }
+
+model User {
+  id    Int    @id @default(autoincrement())
+  name  String
+  files File[]
+}
+
+model File {
+  uuid     String   @id @default(uuid())
+  name     String
+  type     FileType
+  duration Int /// Seconds
+  size     Int /// Bytes
+  user     User     @relation(fields: [userId], references: [id])
+  userId   Int
+}
+
+enum FileType {
+  MP4
+  WAV
+}
