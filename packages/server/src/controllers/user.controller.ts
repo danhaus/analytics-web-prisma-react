@@ -1,12 +1,14 @@
 import { Request, Response } from 'express';
+import { body, validationResult } from 'express-validator';
 import prisma from '../../client';
 
+export const validateCreate = [body('name').exists().isString()];
+
 export const create = async (req: Request, res: Response): Promise<void> => {
-  // Validate request
-  if (!req.body.name) {
-    res.status(400).send({
-      message: 'Name can not be empty!',
-    });
+  const errors = validationResult(req);
+
+  if (!errors.isEmpty()) {
+    res.status(422).json({ errors: errors.array() });
     return;
   }
 

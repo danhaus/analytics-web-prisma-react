@@ -8,7 +8,7 @@
     "build": "dotenv -e .env -- tsc",
     "start": "dotenv -e .env -- NODE_ENV=production node ./build/index.js",
     "dev": "dotenv -e .env -- ts-node-dev --respawn --transpile-only ./src/index.ts",
-    "test:unit":"dotenv -e .env -- jest -i -c='./jest.config.unit.js'",
+    "test:unit": "dotenv -e .env -- jest -i -c='./jest.config.unit.js'",
     "test:integration": "dotenv -e .env.test -- yarn docker:up && prisma db push && jest -i -c='./jest.config.integration.js'",
     "prisma:format": "npx prisma format",
     "prisma:studio": "npx prisma studio",
@@ -27,6 +27,7 @@
   "dependencies": {
     "@prisma/client": "^2.26.0",
     "cors": "^2.8.5",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "express-validator": "^6.12.0"
   }
 }
