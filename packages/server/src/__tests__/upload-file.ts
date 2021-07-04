@@ -1,5 +1,5 @@
 import prisma from '../../client';
-import { createFile } from '../resources';
+import { createFile } from '../services';
 
 describe('create user and upload files', () => {
   beforeAll(async () => {
