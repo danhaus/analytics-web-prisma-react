@@ -2,7 +2,7 @@ import { FileType, PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
-async function main() {
+export async function seedDatabase() {
   // Prisma create query to seed models in database
 
   // Users
@@ -25,6 +25,10 @@ async function main() {
   console.log({ josh, alice });
 
   // Files
+
+  const deleteFiles = prisma.file.deleteMany();
+  await prisma.$transaction([deleteFiles]);
+
   const file1 = await prisma.file.create({
     data: {
       name: 'file1',
@@ -58,7 +62,7 @@ async function main() {
   console.log({ file1, file2, file3 });
 }
 
-main()
+seedDatabase()
   .catch((e) => {
     console.error(e);
     process.exit(1);

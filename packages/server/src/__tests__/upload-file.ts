@@ -1,12 +1,10 @@
 import prisma from '../../client';
 import { createFile } from '../services';
+import { seedDatabase } from '../../prisma/seed';
 
 describe('create user and upload files', () => {
   beforeAll(async () => {
-    await prisma.user.create({
-      data: { name: 'Josh' },
-    });
-    console.log('User Josh successfully created.');
+    await seedDatabase();
   });
 
   afterAll(async () => {
