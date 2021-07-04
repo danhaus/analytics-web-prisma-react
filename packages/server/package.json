@@ -19,6 +19,7 @@
   },
   "devDependencies": {
     "@types/cors": "^2.8.10",
+    "@types/country-list": "^2.1.0",
     "@types/express": "^4.17.12",
     "@types/node": "^15.12.5",
     "prisma": "^2.26.0",
@@ -28,6 +29,7 @@
   "dependencies": {
     "@prisma/client": "^2.26.0",
     "cors": "^2.8.5",
+    "country-list": "^2.2.0",
     "express": "^4.17.1",
     "express-validator": "^6.12.0"
   }

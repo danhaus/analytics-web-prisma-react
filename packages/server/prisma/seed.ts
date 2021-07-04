@@ -2,7 +2,7 @@ import { FileType, PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
-export async function seedDatabase() {
+export async function seedDatabase(): Promise<void> {
   // Prisma create query to seed models in database
 
   // Users
@@ -11,6 +11,7 @@ export async function seedDatabase() {
     update: {},
     create: {
       name: 'Josh',
+      countryOfOrigin: 'AU',
     },
   });
 
@@ -19,6 +20,7 @@ export async function seedDatabase() {
     update: {},
     create: {
       name: 'Alice',
+      countryOfOrigin: 'US',
     },
   });
 

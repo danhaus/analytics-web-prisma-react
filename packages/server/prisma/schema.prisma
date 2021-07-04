@@ -11,9 +11,10 @@ generator client {
 }
 
 model User {
-  id    Int    @id @default(autoincrement())
-  name  String
-  files File[]
+  id              Int    @id @default(autoincrement())
+  name            String
+  countryOfOrigin String /// ISO 3166-1-alpha-2 country code upper case like 'IS' for Iceland
+  files           File[]
 }
 
 model File {

@@ -3,6 +3,7 @@ import prisma from '../../client';
 
 export interface CreateUser {
   name: string;
+  countryOfOrigin: string;
 }
 
 export const createUser = async (user: CreateUser): Promise<User> => {
