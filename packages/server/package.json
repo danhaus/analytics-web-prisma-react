@@ -5,13 +5,15 @@
   "author": "Daniel Hausner",
   "license": "MIT",
   "scripts": {
-    "build": "tsc",
-    "start": "NODE_ENV=production node ./build/index.js",
-    "dev": "ts-node-dev --respawn --transpile-only ./src/index.ts",
-    "test": "jest -i",
+    "build": "dotenv -e .env -- tsc",
+    "start": "dotenv -e .env -- NODE_ENV=production node ./build/index.js",
+    "dev": "dotenv -e .env -- ts-node-dev --respawn --transpile-only ./src/index.ts",
+    "test": "dotenv -e .env.test -- yarn docker:up && yarn prisma:db:push && jest -i",
     "prisma:format": "npx prisma format",
     "prisma:studio": "npx prisma studio",
-    "prisma:db:push": "npx prisma db push"
+    "prisma:db:push": "dotenv -e .env npx prisma db push",
+    "docker:up": "docker compose up -d",
+    "docker:down": "docker compose down"
   },
   "devDependencies": {
     "@types/cors": "^2.8.10",
