@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import userRoutes from './routes/user.routes';
+import fileRoutes from './routes/file.routes';
 
 const app = express();
 
@@ -17,6 +18,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use('/users', userRoutes);
+app.use('/files', fileRoutes);
 
 app.get('/', (req, res) => {
   res.json({ message: `Hello World!` });
