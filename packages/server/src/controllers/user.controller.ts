@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { body, validationResult } from 'express-validator';
-import prisma from '../../client';
 import { isValidCountryCode } from './custom-validators';
+import { createUser } from '../services';
 
 export const validateCreate = [
   body('name').exists().isString(),
@@ -17,11 +17,6 @@ export const create = async (req: Request, res: Response): Promise<void> => {
   }
 
   const { name, countryOfOrigin } = req.body;
-  const result = await prisma.user.create({
-    data: {
-      name,
-      countryOfOrigin,
-    },
-  });
+  const result = await createUser({ name, countryOfOrigin });
   res.json(result);
 };
