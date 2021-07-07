@@ -1,7 +1,7 @@
 import { Response, Request } from 'express';
 import { body, validationResult } from 'express-validator';
-import prisma from '../../client';
 import { isValidFileType } from './custom-validators';
+import { createFile } from '../services';
 
 export const validateCreate = [
   body('name').exists().isString(),
@@ -21,14 +21,6 @@ export const create = async (req: Request, res: Response): Promise<void> => {
 
   const { name, type, duration, size, userId } = req.body;
 
-  const result = await prisma.file.create({
-    data: {
-      name,
-      type,
-      duration,
-      size,
-      userId,
-    },
-  });
+  const result = await createFile({ name, type, duration, size, userId });
   res.json(result);
 };
