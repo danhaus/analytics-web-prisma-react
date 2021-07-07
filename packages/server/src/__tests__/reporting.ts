@@ -1,7 +1,12 @@
 import { FileType } from '@prisma/client';
 import { seed } from '../../prisma/seed';
 import prisma from '../../client';
-import { calculateAverageFileSize, countFilesGroupByType, countFilesUploadedBy } from '../services';
+import {
+  calculateAverageFileSize,
+  calculateAverageVideoDuration,
+  countFilesGroupByType,
+  countFilesUploadedBy,
+} from '../services';
 
 describe('reporting functionality', () => {
   beforeAll(async () => {
@@ -41,6 +46,18 @@ describe('reporting functionality', () => {
     it('calculates average file size of Josh', async () => {
       const joshesAvgFileSize = await calculateAverageFileSize(1);
       expect(joshesAvgFileSize).toEqual((689 + 4358) / 2);
+    });
+  });
+
+  describe('average video duration', () => {
+    it('calculates average video duration of all files', async () => {
+      const avgVideoDuration = await calculateAverageVideoDuration();
+      expect(avgVideoDuration).toEqual((25 + 1263 + 234) / 3);
+    });
+
+    it('calculates average video duration for Josh', async () => {
+      const joshesAvgVideoDuration = await calculateAverageVideoDuration(1);
+      expect(joshesAvgVideoDuration).toEqual((25 + 1263) / 2);
     });
   });
 });

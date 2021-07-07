@@ -15,4 +15,14 @@ router.get('/averageFileSize', reports.getAverageFileSize);
 // Get average file size for a user
 router.get('/averageFileSize/:userId', reports.validateGetAverageFileSizeForUser, reports.getAverageFileSizeForUser);
 
+// Get average video duration of all files
+router.get('/averageVideoDuration', reports.getAverageVideoDuration);
+
+// Get average video duration for a user
+router.get(
+  '/averageVideoDuration/:userId',
+  reports.validateGetAverageVideoDurationForUser,
+  reports.getAverageVideoDurationForUser,
+);
+
 export default router;

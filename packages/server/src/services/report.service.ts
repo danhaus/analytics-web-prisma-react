@@ -19,7 +19,7 @@ export const countFilesGroupByType = async (): Promise<{ type: FileType; fileCou
   return result.map((o) => ({ type: o.type, fileCount: o._count ? o._count : 0 }));
 };
 
-// Returns average file size of all files
+// Returns average file size of all files or per user
 export const calculateAverageFileSize = async (userId?: number): Promise<number> => {
   const result = await prisma.file.aggregate({
     _avg: {
@@ -31,4 +31,18 @@ export const calculateAverageFileSize = async (userId?: number): Promise<number>
   });
   // eslint-disable-next-line no-underscore-dangle
   return result._avg.size ? result._avg.size : 0;
+};
+
+// Returns average duration of all files or per user
+export const calculateAverageVideoDuration = async (userId?: number): Promise<number> => {
+  const result = await prisma.file.aggregate({
+    _avg: {
+      duration: true,
+    },
+    where: {
+      userId,
+    },
+  });
+  // eslint-disable-next-line no-underscore-dangle
+  return result._avg.duration ? result._avg.duration : 0;
 };
