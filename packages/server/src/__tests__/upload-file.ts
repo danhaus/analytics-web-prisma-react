@@ -1,10 +1,10 @@
 import prisma from '../../client';
 import { createFile } from '../services';
-import { seedDatabase } from '../../prisma/seed';
+import { seed } from '../../prisma/seed';
 
 describe('create user and upload files', () => {
   beforeAll(async () => {
-    await seedDatabase();
+    await seed();
   });
 
   afterAll(async () => {

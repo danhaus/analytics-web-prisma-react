@@ -2,7 +2,9 @@ import { FileType, PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
-export async function seedDatabase(): Promise<void> {
+export async function seed(): Promise<void> {
+  console.log('##### SEEDING DATABASE #####');
+
   // Prisma create query to seed models in database
 
   // Users
@@ -31,6 +33,7 @@ export async function seedDatabase(): Promise<void> {
   const deleteFiles = prisma.file.deleteMany();
   await prisma.$transaction([deleteFiles]);
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const file1 = await prisma.file.create({
     data: {
       name: 'file1',
@@ -41,6 +44,7 @@ export async function seedDatabase(): Promise<void> {
     },
   });
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const file2 = await prisma.file.create({
     data: {
       name: 'file2',
@@ -63,12 +67,3 @@ export async function seedDatabase(): Promise<void> {
 
   console.log({ file1, file2, file3 });
 }
-
-seedDatabase()
-  .catch((e) => {
-    console.error(e);
-    process.exit(1);
-  })
-  .finally(async () => {
-    await prisma.$disconnect();
-  });
