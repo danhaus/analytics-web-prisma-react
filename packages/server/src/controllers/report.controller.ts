@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { countFilesGroupByType, countFilesGroupByUser } from '../services';
 
-export const getNumberOfFilesGroupedByUser = async (req: Request, res: Response): Promise<void> => {
+export const getNumberOfFilesGroupByUser = async (req: Request, res: Response): Promise<void> => {
   const result = await countFilesGroupByUser();
   res.json(result);
 };
