@@ -20,10 +20,13 @@ export const countFilesGroupByType = async (): Promise<{ type: FileType; fileCou
 };
 
 // Returns average file size of all files
-export const calculateAverageFileSize = async (): Promise<number> => {
+export const calculateAverageFileSize = async (userId?: number): Promise<number> => {
   const result = await prisma.file.aggregate({
     _avg: {
       size: true,
+    },
+    where: {
+      userId,
     },
   });
   // eslint-disable-next-line no-underscore-dangle

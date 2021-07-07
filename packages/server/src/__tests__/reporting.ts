@@ -32,8 +32,15 @@ describe('reporting functionality', () => {
     );
   });
 
-  it('calculates average file size of all files', async () => {
-    const avgFileSize = await calculateAverageFileSize();
-    expect(avgFileSize).toEqual(4650);
+  describe('average file size', () => {
+    it('calculates average file size of all files', async () => {
+      const avgFileSize = await calculateAverageFileSize();
+      expect(avgFileSize).toEqual(4650);
+    });
+
+    it('calculates average file size of Josh', async () => {
+      const joshesAvgFileSize = await calculateAverageFileSize(1);
+      expect(joshesAvgFileSize).toEqual((689 + 4358) / 2);
+    });
   });
 });
