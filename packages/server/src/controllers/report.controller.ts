@@ -2,9 +2,9 @@ import { Request, Response } from 'express';
 import { param, validationResult } from 'express-validator';
 import { calculateAverageFileSize, countFilesGroupByType, countFilesUploadedBy } from '../services';
 
-export const validateGetNumberOfFilesGroupByUser = [param('userId').exists().isInt()];
+export const validateGetNumberOfFilesForUser = [param('userId').exists().isInt()];
 
-export const getNumberOfFilesGroupByUser = async (req: Request, res: Response): Promise<void> => {
+export const getNumberOfFilesForUser = async (req: Request, res: Response): Promise<void> => {
   const errors = validationResult(req);
 
   if (!errors.isEmpty()) {
