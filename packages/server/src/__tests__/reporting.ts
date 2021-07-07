@@ -1,7 +1,7 @@
 import { FileType } from '@prisma/client';
 import { seed } from '../../prisma/seed';
 import prisma from '../../client';
-import { calculateAverageFileSize, countFilesGroupByType, countFilesGroupByUser } from '../services';
+import { calculateAverageFileSize, countFilesGroupByType, countFilesUploadedBy } from '../services';
 
 describe('reporting functionality', () => {
   beforeAll(async () => {
@@ -17,14 +17,9 @@ describe('reporting functionality', () => {
     await prisma.$disconnect();
   });
 
-  test('Josh (id: 1) has uploaded two files, while Alice (id: 2) only one', async () => {
-    const fileCountByUser = await countFilesGroupByUser();
-    expect(fileCountByUser).toEqual(
-      expect.arrayContaining([
-        { id: 1, fileCount: 2 },
-        { id: 2, fileCount: 1 },
-      ]),
-    );
+  test('Josh (id: 1) has uploaded two files', async () => {
+    const joshesFileCount = await countFilesUploadedBy(1);
+    expect(joshesFileCount).toEqual(2);
   });
 
   test('There are two MP4 files and one WAV file.', async () => {

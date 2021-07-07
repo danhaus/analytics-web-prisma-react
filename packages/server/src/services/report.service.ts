@@ -1,21 +1,13 @@
 import { FileType } from '@prisma/client';
 import prisma from '../../client';
 
-// Returns the number of files uploaded per user
-export const countFilesGroupByUser = async (): Promise<{ id: number; fileCount: number }[]> => {
-  const result = await prisma.user.findMany({
-    select: {
-      id: true,
-      _count: {
-        select: {
-          files: true,
-        },
-      },
+// Returns the number of files uploaded by user
+export const countFilesUploadedBy = async (userId: number): Promise<number> =>
+  prisma.file.count({
+    where: {
+      userId,
     },
   });
-  // eslint-disable-next-line no-underscore-dangle
-  return result.map((o) => ({ id: o.id, fileCount: o._count ? o._count.files : 0 }));
-};
 
 // Returns the number of files per type of file
 export const countFilesGroupByType = async (): Promise<{ type: FileType; fileCount: number }[]> => {
