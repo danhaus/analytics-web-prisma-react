@@ -1,8 +1,8 @@
-import { CreateUser, createUser } from '.';
+import { NewUser, createUser } from '.';
 import { prismaMock } from '../../singleton';
 
 it('creates new user', async () => {
-  const user: CreateUser = {
+  const user: NewUser = {
     name: 'John',
     countryOfOrigin: 'IS',
   };
