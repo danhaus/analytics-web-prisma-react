@@ -9,4 +9,7 @@ router.get('/numberOfFilesByUser', reports.getNumberOfFilesGroupByUser);
 // Get number of files grouped by file type
 router.get('/numberOfFilesByType', reports.getNumberOfFilesGroupByType);
 
+// Get average file size of all files
+router.get('/averageFileSize', reports.getAverageFileSize);
+
 export default router;

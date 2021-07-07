@@ -1,7 +1,7 @@
 import { FileType } from '@prisma/client';
 import { seed } from '../../prisma/seed';
 import prisma from '../../client';
-import { countFilesGroupByType, countFilesGroupByUser } from '../services';
+import { calculateAverageFileSize, countFilesGroupByType, countFilesGroupByUser } from '../services';
 
 describe('reporting functionality', () => {
   beforeAll(async () => {
@@ -35,5 +35,10 @@ describe('reporting functionality', () => {
         { type: FileType.WAV.toString(), fileCount: 1 },
       ]),
     );
+  });
+
+  it('calculates average file size of all files', async () => {
+    const avgFileSize = await calculateAverageFileSize();
+    expect(avgFileSize).toEqual(4650);
   });
 });
