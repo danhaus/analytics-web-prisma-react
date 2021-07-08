@@ -1,13 +1,16 @@
 import * as React from 'react';
-import { ChakraProvider, theme } from '@chakra-ui/react';
+import { ChakraProvider } from '@chakra-ui/react';
 
 import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
 import UsersPage from './users/pages/UsersPage';
 import { ColorModeSwitcher } from "./ColorModeSwitcher";
+import Sidebar from "./navigation/components/Sidebar";
+import theme from "./theme";
 
 export const App = () => (
   <ChakraProvider theme={theme}>
     <Router>
+      <Sidebar>
       <ColorModeSwitcher/>
       <nav>
         <ul>
@@ -28,6 +31,7 @@ export const App = () => (
           <UsersPage />
         </Route>
       </Switch>
+      </Sidebar>
     </Router>
   </ChakraProvider>
 );
