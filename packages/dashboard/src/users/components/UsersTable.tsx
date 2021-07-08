@@ -1,6 +1,6 @@
 import { Table, Thead, Tbody, Tfoot, Tr, Th, Td, TableCaption } from '@chakra-ui/react';
 import React from 'react';
-import { useGetAllUsersQuery } from '../../services/usersService';
+import { useGetAllUsersQuery } from '../../services/reportingService';
 
 interface User {
   id: number;

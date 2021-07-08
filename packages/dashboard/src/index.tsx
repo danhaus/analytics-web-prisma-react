@@ -5,7 +5,7 @@ import { App } from './App';
 import reportWebVitals from './reportWebVitals';
 import * as serviceWorker from './serviceWorker';
 import { ApiProvider } from '@reduxjs/toolkit/query/react';
-import { reportingAPI } from './services/usersService';
+import { reportingAPI } from './services/reportingService';
 
 ReactDOM.render(
   <React.StrictMode>
