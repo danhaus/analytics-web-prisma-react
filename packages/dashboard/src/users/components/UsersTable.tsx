@@ -1,5 +1,6 @@
 import { Table, Thead, Tbody, Tfoot, Tr, Th, Td, TableCaption } from '@chakra-ui/react';
 import React from 'react';
+import { useGetAllUsersQuery } from '../../services/usersService';
 
 interface User {
   id: number;
@@ -16,10 +17,9 @@ const UserTableRow = ({ id, name, countryOfOrigin }: User) => (
 );
 
 const UsersTable = () => {
-  const users: User[] = [
-    { id: 1, name: 'James', countryOfOrigin: 'Finland' },
-    { id: 2, name: 'Ariane', countryOfOrigin: 'Germany' },
-  ];
+  const { data } = useGetAllUsersQuery();
+
+  const users = data ? data : [];
 
   return (
     <Table variant="simple">
