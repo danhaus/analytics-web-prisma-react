@@ -18,12 +18,12 @@ app.use(express.json());
 // Parse requests of content-type - application/x-www-form-urlencoded
 app.use(express.urlencoded({ extended: true }));
 
-app.use('/users', userRoutes);
-app.use('/files', fileRoutes);
-app.use('/reports', reportRoutes);
+app.use('/api/users', userRoutes);
+app.use('/api/files', fileRoutes);
+app.use('/api/reports', reportRoutes);
 
 app.get('/', (req, res) => {
-  res.json({ message: `Hello World!` });
+  res.json({ message: `API is available under /api route` });
 });
 
 // Set port, listen for requests
