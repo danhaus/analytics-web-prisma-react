@@ -1,6 +1,7 @@
 import { Table, Thead, Tbody, Tfoot, Tr, Th, Td, TableCaption } from '@chakra-ui/react';
 import React from 'react';
 import { useGetAllUsersQuery } from '../../services/reportingService';
+import { getName } from 'country-list';
 
 interface User {
   id: number;
@@ -12,7 +13,7 @@ const UserTableRow = ({ id, name, countryOfOrigin }: User) => (
   <Tr>
     <Td isNumeric>{id}</Td>
     <Td>{name}</Td>
-    <Td>{countryOfOrigin}</Td>
+    <Td>{getName(countryOfOrigin)}</Td>
   </Tr>
 );
 
