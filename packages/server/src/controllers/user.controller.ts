@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { body, validationResult } from 'express-validator';
 import { isValidCountryCode } from './custom-validators';
-import { createUser } from '../services';
+import { createUser, retrieveAllUsers } from '../services';
 
 export const validateCreate = [
   body('name').exists().isString(),
@@ -19,4 +19,9 @@ export const create = async (req: Request, res: Response): Promise<void> => {
   const { name, countryOfOrigin } = req.body;
   const result = await createUser({ name, countryOfOrigin });
   res.json(result);
+};
+
+export const getAllUsers = async (req: Request, res: Response): Promise<void> => {
+  const allUsers = await retrieveAllUsers();
+  res.json(allUsers);
 };

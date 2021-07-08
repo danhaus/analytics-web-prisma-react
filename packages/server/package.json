@@ -9,7 +9,7 @@
     "start": "dotenv -e .env -- NODE_ENV=production node ./build/index.js",
     "dev": "dotenv -e .env -- ts-node-dev --respawn --transpile-only ./src/index.ts",
     "test:unit": "dotenv -e .env -- jest -i -c='./jest.config.unit.js'",
-    "test:integration": "dotenv -e .env.test -- yarn docker:up && dotenv -e .env.test -- prisma db push && dotenv -e .env.test -- jest -i -c='./jest.config.integration.js'",
+    "test:integration": "dotenv -e .env.test -- yarn docker:up && dotenv -e .env.test -- prisma migrate reset --skip-seed --force && dotenv -e .env.test -- jest -i -c='./jest.config.integration.js'",
     "prisma:format": "npx prisma format",
     "prisma:studio": "npx prisma studio",
     "prisma:db:push": "dotenv -e .env npx prisma db push",

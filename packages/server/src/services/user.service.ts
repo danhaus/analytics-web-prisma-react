@@ -9,3 +9,5 @@ export interface NewUser {
 export const createUser = async (user: NewUser): Promise<User> => {
   return prisma.user.create({ data: user });
 };
+
+export const retrieveAllUsers = async (): Promise<User[]> => prisma.user.findMany();
