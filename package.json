@@ -8,6 +8,7 @@
     "packages/*"
   ],
   "scripts": {
+    "server": "yarn workspace @analytics-dashboard-express-react/server dev",
     "dashboard": "yarn workspace @analytics-dashboard-express-react/dashboard start",
     "eslint": "eslint 'packages/**/src/**/*.ts'",
     "eslint:fix": "eslint --fix 'packages/**/src/**/*.ts'",
