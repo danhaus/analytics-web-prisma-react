@@ -16,6 +16,7 @@ import { FiHome, FiUsers } from "react-icons/fi";
 import { IconType } from 'react-icons';
 import MobileNav from './MobileNav';
 import NavItem from './NavItem';
+import { ColorModeSwitcher } from '../../../ColorModeSwitcher';
 
 interface LinkItemProps {
   name: string;
@@ -72,8 +73,9 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
     >
       <Flex h="20" alignItems="center" mx="8" justifyContent="space-between">
         <Text fontSize="2xl" fontFamily="monospace" fontWeight="bold">
-          Logo
+          Dashboard
         </Text>
+      <ColorModeSwitcher/>
         <CloseButton display={{ base: 'flex', md: 'none' }} onClick={onClose} />
       </Flex>
       {LinkItems.map((link) => (
