@@ -1,10 +1,11 @@
-import { Box, Text } from '@chakra-ui/react';
+import { Box} from '@chakra-ui/react';
 import React from 'react';
+import UsersTable from "../components/UsersTable";
 
 const UsersPage = () => {
   return (
-    <Box>
-      <Text>Users Page</Text>
+    <Box h="100vh">
+      <UsersTable/>
     </Box>
   );
 };
