@@ -2,6 +2,7 @@ import React from 'react';
 import { Box, chakra, SimpleGrid } from '@chakra-ui/react';
 import UsersCard from '../components/UsersCard';
 import FilesCountCard from '../components/FilesCountCard';
+import FilesSizeCard from "../components/FilesSizeCard";
 
 const ReportsPage = () => {
   return (
@@ -12,6 +13,7 @@ const ReportsPage = () => {
       <SimpleGrid columns={{ base: 1, md: 3 }} spacing={{ base: 5, lg: 8 }}>
         <UsersCard />
         <FilesCountCard />
+        <FilesSizeCard/>
       </SimpleGrid>
     </Box>
   );

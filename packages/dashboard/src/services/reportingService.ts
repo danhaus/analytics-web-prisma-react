@@ -18,9 +18,12 @@ export const reportingAPI = createApi({
     getFileCount: builder.query<number, void>({
       query: () => 'reports/fileCount',
     }),
+    getAverageFileSize: builder.query<number, void>({
+      query: () => 'reports/averageFileSize',
+    }),
   }),
 });
 
 // Export hooks for usage in functional components, which are
 // auto-generated based on the defined endpoints
-export const { useGetAllUsersQuery, useGetAllFilesQuery, useGetFileCountQuery } = reportingAPI;
+export const { useGetAllUsersQuery, useGetAllFilesQuery, useGetFileCountQuery, useGetAverageFileSizeQuery } = reportingAPI;
