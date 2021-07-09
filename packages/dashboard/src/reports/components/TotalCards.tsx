@@ -19,8 +19,8 @@ const TotalCards = () => {
       </chakra.h1>
       <SimpleGrid columns={{ base: 1, md: 3 }} spacing={{ base: 5, lg: 8 }}>
         <StatsCard title={'Users'} stat={numberOfUsers.toString()} icon={<BsPerson size={'3em'} />} />
-        <StatsCard title={'Files'} stat={fileCount.toString()} icon={<BsFileEarmark size={'3em'} />} />
-        <StatsCard title={'Size'} stat={`${fileSize} B`} icon={<FiServer size={'3em'} />} />
+        <StatsCard title={'Files'} stat={fileCount.toString()} icon={<BsFileEarmark size={'3em'} />} helpText={`${(fileCount/numberOfUsers).toFixed(1)} per user`} />
+        <StatsCard title={'Size'} stat={`${fileSize} B`} icon={<FiServer size={'3em'} />} helpText={`${(fileSize/fileCount).toFixed(0)} B/user`} />
       </SimpleGrid>
     </Box>
   );
