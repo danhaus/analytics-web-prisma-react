@@ -6,6 +6,7 @@ import UsersPage from './users/pages/UsersPage';
 import Sidebar from './navigation/components/Sidebar';
 import theme from './theme';
 import FilesPage from './files/FilesPage';
+import ReportsPage from "./reports/pages/ReportsPage";
 
 export const App = () => (
   <ChakraProvider theme={theme}>
@@ -17,6 +18,9 @@ export const App = () => (
           </Route>
           <Route path="/files">
             <FilesPage />
+          </Route>
+          <Route path="/">
+            <ReportsPage/>
           </Route>
         </Switch>
       </Sidebar>
