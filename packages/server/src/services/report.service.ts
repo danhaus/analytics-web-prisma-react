@@ -19,6 +19,18 @@ export const countFilesGroupByType = async (): Promise<{ type: FileType; fileCou
   return result.map((o) => ({ type: o.type, fileCount: o._count ? o._count : 0 }));
 };
 
+// Returns the size of files per type of file
+export const retrieveFileSizeGroupByType = async (): Promise<{ type: FileType; totalSize: number }[]> => {
+  const result = await prisma.file.groupBy({
+    by: ['type'],
+    _sum: {
+      size: true,
+    },
+  });
+  // eslint-disable-next-line no-underscore-dangle
+  return result.map((o) => ({ type: o.type, totalSize: o._sum.size ? o._sum.size : 0 }));
+};
+
 // Returns average file size of all files or per user
 export const calculateAverageFileSize = async (userId?: number): Promise<number> => {
   const result = await prisma.file.aggregate({

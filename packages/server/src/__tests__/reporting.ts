@@ -6,6 +6,7 @@ import {
   calculateAverageVideoDuration,
   countFilesGroupByType,
   countFiles,
+  retrieveFileSizeGroupByType,
 } from '../services';
 
 describe('reporting functionality', () => {
@@ -38,6 +39,16 @@ describe('reporting functionality', () => {
       expect.arrayContaining([
         { type: FileType.MP4.toString(), fileCount: 2 },
         { type: FileType.WAV.toString(), fileCount: 1 },
+      ]),
+    );
+  });
+
+  it('calculates file size by their type', async () => {
+    const fileSizesByType = await retrieveFileSizeGroupByType();
+    expect(fileSizesByType).toEqual(
+      expect.arrayContaining([
+        { type: FileType.MP4.toString(), totalSize: 9592 },
+        { type: FileType.WAV.toString(), totalSize: 4358 },
       ]),
     );
   });
