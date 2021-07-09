@@ -1,4 +1,4 @@
-import { FileType } from '@prisma/client';
+import { FileType, File } from '@prisma/client';
 import prisma from '../../client';
 
 // Returns the number of files uploaded by user
@@ -46,3 +46,5 @@ export const calculateAverageVideoDuration = async (userId?: number): Promise<nu
   // eslint-disable-next-line no-underscore-dangle
   return result._avg.duration ? result._avg.duration : 0;
 };
+
+export const retrieveAllFiles = async (): Promise<File[]> => prisma.file.findMany();

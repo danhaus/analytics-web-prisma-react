@@ -1,5 +1,5 @@
 import prisma from '../../client';
-import { createFile } from '../services';
+import { createFile, retrieveAllFiles } from '../services';
 import { seed } from '../../prisma/seed';
 
 describe('create user and upload files', () => {
@@ -31,5 +31,10 @@ describe('create user and upload files', () => {
     });
 
     expect(file.user.name).toEqual('Josh');
+  });
+
+  it('retrieves all files', async () => {
+    const allFiles = await retrieveAllFiles();
+    expect(allFiles).toHaveLength(4);
   });
 });

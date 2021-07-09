@@ -1,7 +1,7 @@
 import { Response, Request } from 'express';
 import { body, validationResult } from 'express-validator';
 import { isValidFileType } from './custom-validators';
-import { createFile } from '../services';
+import { createFile, retrieveAllFiles } from '../services';
 
 export const validateCreate = [
   body('name').exists().isString(),
@@ -23,4 +23,9 @@ export const create = async (req: Request, res: Response): Promise<void> => {
 
   const result = await createFile({ name, type, duration, size, userId });
   res.json(result);
+};
+
+export const getAllFiles = async (req: Request, res: Response): Promise<void> => {
+  const allFiles = await retrieveAllFiles();
+  res.json(allFiles);
 };
