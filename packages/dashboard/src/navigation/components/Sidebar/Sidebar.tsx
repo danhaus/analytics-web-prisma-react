@@ -12,7 +12,7 @@ import {
   useDisclosure,
   BoxProps,
 } from '@chakra-ui/react';
-import { FiHome, FiUsers } from "react-icons/fi";
+import { FiFile, FiHome, FiUsers } from 'react-icons/fi';
 import { IconType } from 'react-icons';
 import MobileNav from './MobileNav';
 import NavItem from './NavItem';
@@ -27,6 +27,7 @@ interface LinkItemProps {
 const LinkItems: Array<LinkItemProps> = [
   { name: 'Home', icon: FiHome, path: '/' },
   { name: 'Users', icon: FiUsers, path: '/users' },
+  { name: 'Files', icon: FiFile, path: '/files' },
 ];
 
 export default function SimpleSidebar({ children }: { children: ReactNode }) {
@@ -75,7 +76,7 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
         <Text fontSize="2xl" fontFamily="monospace" fontWeight="bold">
           Dashboard
         </Text>
-      <ColorModeSwitcher/>
+        <ColorModeSwitcher />
         <CloseButton display={{ base: 'flex', md: 'none' }} onClick={onClose} />
       </Flex>
       {LinkItems.map((link) => (

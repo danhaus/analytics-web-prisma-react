@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import UsersPage from './users/pages/UsersPage';
 import Sidebar from './navigation/components/Sidebar';
 import theme from './theme';
+import FilesPage from './files/FilesPage';
 
 export const App = () => (
   <ChakraProvider theme={theme}>
@@ -13,6 +14,9 @@ export const App = () => (
         <Switch>
           <Route path="/users">
             <UsersPage />
+          </Route>
+          <Route path="/files">
+            <FilesPage />
           </Route>
         </Switch>
       </Sidebar>
