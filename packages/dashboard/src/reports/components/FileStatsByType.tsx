@@ -13,7 +13,7 @@ const FileStatsByType = () => {
     <Box>
       {fileSizeByType.map((i) => (
         <Box key={i.type}>
-          <chakra.h1 textAlign={'center'} fontSize={'4xl'} py={5} fontWeight={'bold'}>
+          <chakra.h1 textAlign={'center'} fontSize={'4xl'} pt={10} pb={5} fontWeight={'bold'}>
             {i.type}
           </chakra.h1>
           <SimpleGrid columns={{ base: 1, md: 3 }} spacing={{ base: 5, lg: 8 }}>
