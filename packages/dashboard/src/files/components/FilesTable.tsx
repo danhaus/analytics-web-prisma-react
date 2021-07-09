@@ -18,8 +18,8 @@ const TableHeader = () => (
     <Th isNumeric w="400px">UUID</Th>
     <Th>Name</Th>
     <Th>Type</Th>
-    <Th>Duration</Th>
-    <Th>Size</Th>
+    <Th>Duration (s)</Th>
+    <Th>Size (bytes)</Th>
   </Tr>
 );
 
