@@ -12,6 +12,14 @@ const UserTableRow = ({ id, name, countryOfOrigin }: User) => (
   </Tr>
 );
 
+const TableHeader = () => (
+  <Tr>
+    <Th isNumeric>User ID</Th>
+    <Th>Name</Th>
+    <Th>Country of origin</Th>
+  </Tr>
+);
+
 const UsersTable = () => {
   const { data } = useGetAllUsersQuery();
 
@@ -21,11 +29,7 @@ const UsersTable = () => {
     <Table variant="simple">
       <TableCaption>List of users</TableCaption>
       <Thead>
-        <Tr>
-          <Th isNumeric>User ID</Th>
-          <Th>Name</Th>
-          <Th>Country of origin</Th>
-        </Tr>
+        <TableHeader />
       </Thead>
       <Tbody>
         {users.map((u) => (
@@ -33,11 +37,7 @@ const UsersTable = () => {
         ))}
       </Tbody>
       <Tfoot>
-        <Tr>
-          <Th isNumeric>User ID</Th>
-          <Th>Name</Th>
-          <Th>Country of origin</Th>
-        </Tr>
+        <TableHeader />
       </Tfoot>
     </Table>
   );
