@@ -2,16 +2,25 @@
 // Modified by Daniel Hausner
 
 import React, { ReactNode } from "react";
-import { Box, Flex, Stat, StatLabel, StatNumber, useColorModeValue } from "@chakra-ui/react";
+import {
+  Box,
+  Flex,
+  Stat,
+  StatHelpText,
+  StatLabel,
+  StatNumber,
+  useColorModeValue
+} from "@chakra-ui/react";
 
 interface StatsCardProps {
   title: string;
   stat: string;
   icon: ReactNode;
+  helpText?: string;
 }
 
 const StatsCard = (props: StatsCardProps) => {
-  const { title, stat, icon } = props;
+  const { title, stat, icon, helpText } = props;
   return (
     <Stat
       px={{ base: 2, md: 4 }}
@@ -29,6 +38,9 @@ const StatsCard = (props: StatsCardProps) => {
           <StatNumber fontSize={'2xl'} fontWeight={'medium'}>
             {stat}
           </StatNumber>
+          <StatHelpText >
+            {helpText}
+          </StatHelpText>
         </Box>
         <Box my={'auto'} color={useColorModeValue('gray.800', 'gray.200')} alignContent={'center'}>
           {icon}
