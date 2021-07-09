@@ -5,7 +5,7 @@ import {
   calculateAverageFileSize,
   calculateAverageVideoDuration,
   countFilesGroupByType,
-  countFilesUploadedBy,
+  countFiles,
 } from '../services';
 
 describe('reporting functionality', () => {
@@ -23,8 +23,13 @@ describe('reporting functionality', () => {
   });
 
   test('Josh (id: 1) has uploaded two files', async () => {
-    const joshesFileCount = await countFilesUploadedBy(1);
+    const joshesFileCount = await countFiles(1);
     expect(joshesFileCount).toEqual(2);
+  });
+
+  it('counts all files', async () => {
+    const totalFileCount = await countFiles();
+    expect(totalFileCount).toEqual(3);
   });
 
   test('There are two MP4 files and one WAV file.', async () => {

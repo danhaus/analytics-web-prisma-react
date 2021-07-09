@@ -3,6 +3,9 @@ import * as reports from '../controllers/report.controller';
 
 const router = Router();
 
+// Get total number of files
+router.get('/fileCount', reports.getTotalNumberOfFiles);
+
 // Get number of files for a user
 router.get('/fileCount/:userId(\\d+)', reports.validateGetNumberOfFilesForUser, reports.getNumberOfFilesForUser);
 

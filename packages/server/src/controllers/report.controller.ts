@@ -4,10 +4,15 @@ import {
   calculateAverageFileSize,
   calculateAverageVideoDuration,
   countFilesGroupByType,
-  countFilesUploadedBy,
+  countFiles,
 } from '../services';
 
 export const validateGetNumberOfFilesForUser = [param('userId').exists().isInt()];
+
+export const getTotalNumberOfFiles = async (req: Request, res: Response): Promise<void> => {
+  const totalNumberOfFiles = await countFiles();
+  res.json(totalNumberOfFiles);
+};
 
 export const getNumberOfFilesForUser = async (req: Request, res: Response): Promise<void> => {
   const errors = validationResult(req);
@@ -17,7 +22,7 @@ export const getNumberOfFilesForUser = async (req: Request, res: Response): Prom
     return;
   }
   const userId = parseInt(req.params.userId, 10);
-  const result = await countFilesUploadedBy(userId);
+  const result = await countFiles(userId);
   res.json(result);
 };
 

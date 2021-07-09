@@ -2,7 +2,7 @@ import { FileType, File } from '@prisma/client';
 import prisma from '../../client';
 
 // Returns the number of files uploaded by user
-export const countFilesUploadedBy = async (userId: number): Promise<number> =>
+export const countFiles = async (userId?: number): Promise<number> =>
   prisma.file.count({
     where: {
       userId,
