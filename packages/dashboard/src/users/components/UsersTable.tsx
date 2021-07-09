@@ -26,7 +26,7 @@ const UsersTable = () => {
   const users = data ? data : [];
 
   return (
-    <Table variant="simple">
+    <Table variant="simple" colorScheme="blackAlpha">
       <TableCaption>List of users</TableCaption>
       <Thead>
         <TableHeader />

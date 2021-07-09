@@ -15,7 +15,7 @@ const FilesTableRow = ({ uuid, name, type, duration, size }: Omit<File, 'userId'
 
 const TableHeader = () => (
   <Tr>
-    <Th isNumeric>UUID</Th>
+    <Th isNumeric w="400px">UUID</Th>
     <Th>Name</Th>
     <Th>Type</Th>
     <Th>Duration</Th>
@@ -29,7 +29,7 @@ const FilesTable = () => {
   const files = data ? data : [];
 
   return (
-    <Table variant="simple">
+    <Table variant="simple" colorScheme="blackAlpha">
       <TableCaption>List of files</TableCaption>
       <Thead>
         <TableHeader />
