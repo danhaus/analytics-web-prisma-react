@@ -1,10 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-
-export interface User {
-  id: number;
-  name: string;
-  countryOfOrigin: string;
-}
+import { User } from '../types/serverTypes';
 
 type UsersResponse = User[];
 
