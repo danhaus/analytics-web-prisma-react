@@ -9,26 +9,26 @@ export const countFiles = async (userId?: number): Promise<number> =>
     },
   });
 
-// Returns the number of files per type of file
-export const countFilesGroupByType = async (): Promise<{ type: FileType; fileCount: number }[]> => {
+// Returns files stats grouped by file type
+export const retrieveFileStatsByFileType = async (): Promise<
+  { type: FileType; size: number; count: number; duration: number }[]
+> => {
   const result = await prisma.file.groupBy({
     by: ['type'],
     _count: true,
-  });
-  // eslint-disable-next-line no-underscore-dangle
-  return result.map((o) => ({ type: o.type, fileCount: o._count ? o._count : 0 }));
-};
-
-// Returns the size of files per type of file
-export const retrieveFileSizeGroupByType = async (): Promise<{ type: FileType; totalSize: number }[]> => {
-  const result = await prisma.file.groupBy({
-    by: ['type'],
     _sum: {
       size: true,
+      duration: true,
     },
   });
-  // eslint-disable-next-line no-underscore-dangle
-  return result.map((o) => ({ type: o.type, totalSize: o._sum.size ? o._sum.size : 0 }));
+  /* eslint-disable no-underscore-dangle */
+  return result.map((o) => ({
+    type: o.type,
+    size: o._sum.size ? o._sum.size : 0,
+    count: o._count,
+    duration: o._sum.duration ? o._sum.duration : 0,
+  }));
+  /* eslint-enable no-underscore-dangle */
 };
 
 // Returns average file size of all files or per user

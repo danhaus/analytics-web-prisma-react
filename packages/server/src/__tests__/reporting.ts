@@ -4,9 +4,8 @@ import prisma from '../../client';
 import {
   calculateAverageFileSize,
   calculateAverageVideoDuration,
-  countFilesGroupByType,
   countFiles,
-  retrieveFileSizeGroupByType,
+  retrieveFileStatsByFileType,
 } from '../services';
 
 describe('reporting functionality', () => {
@@ -33,22 +32,22 @@ describe('reporting functionality', () => {
     expect(totalFileCount).toEqual(3);
   });
 
-  test('There are two MP4 files and one WAV file.', async () => {
-    const fileCountByType = await countFilesGroupByType();
-    expect(fileCountByType).toEqual(
+  it('calculates files stats and groups them by file type', async () => {
+    const fileStatsByType = await retrieveFileStatsByFileType();
+    expect(fileStatsByType).toEqual(
       expect.arrayContaining([
-        { type: FileType.MP4.toString(), fileCount: 2 },
-        { type: FileType.WAV.toString(), fileCount: 1 },
-      ]),
-    );
-  });
-
-  it('calculates file size by their type', async () => {
-    const fileSizesByType = await retrieveFileSizeGroupByType();
-    expect(fileSizesByType).toEqual(
-      expect.arrayContaining([
-        { type: FileType.MP4.toString(), totalSize: 9592 },
-        { type: FileType.WAV.toString(), totalSize: 4358 },
+        {
+          type: FileType.MP4.toString(),
+          count: 2,
+          size: 9592,
+          duration: 259,
+        },
+        {
+          type: FileType.WAV.toString(),
+          count: 1,
+          size: 4358,
+          duration: 1263,
+        },
       ]),
     );
   });

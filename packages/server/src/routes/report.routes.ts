@@ -9,11 +9,8 @@ router.get('/fileCount', reports.getTotalNumberOfFiles);
 // Get number of files for a user
 router.get('/fileCount/:userId(\\d+)', reports.validateGetNumberOfFilesForUser, reports.getNumberOfFilesForUser);
 
-// Get number of files grouped by file type
-router.get('/fileCount/byType', reports.getNumberOfFilesGroupByType);
-
-// Get file size grouped by file type
-router.get('/fileSize/byType', reports.getFileSizeGroupByType);
+// Get file stats grouped by type
+router.get('/fileStats', reports.getFileStatsGroupByType);
 
 // Get average file size of all files
 router.get('/averageFileSize', reports.getAverageFileSize);

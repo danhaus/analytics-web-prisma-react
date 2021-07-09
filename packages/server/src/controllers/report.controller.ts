@@ -3,9 +3,8 @@ import { param, validationResult } from 'express-validator';
 import {
   calculateAverageFileSize,
   calculateAverageVideoDuration,
-  countFilesGroupByType,
   countFiles,
-  retrieveFileSizeGroupByType,
+  retrieveFileStatsByFileType,
 } from '../services';
 
 export const validateGetNumberOfFilesForUser = [param('userId').exists().isInt()];
@@ -27,13 +26,8 @@ export const getNumberOfFilesForUser = async (req: Request, res: Response): Prom
   res.json(result);
 };
 
-export const getNumberOfFilesGroupByType = async (req: Request, res: Response): Promise<void> => {
-  const result = await countFilesGroupByType();
-  res.json(result);
-};
-
-export const getFileSizeGroupByType = async (req: Request, res: Response): Promise<void> => {
-  const result = await retrieveFileSizeGroupByType();
+export const getFileStatsGroupByType = async (req: Request, res: Response): Promise<void> => {
+  const result = await retrieveFileStatsByFileType();
   res.json(result);
 };
 
