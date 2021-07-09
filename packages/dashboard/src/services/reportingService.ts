@@ -15,9 +15,12 @@ export const reportingAPI = createApi({
     getAllFiles: builder.query<FilesResponse, void>({
       query: () => 'files/',
     }),
+    getFileCount: builder.query<number, void>({
+      query: () => 'reports/fileCount',
+    }),
   }),
 });
 
 // Export hooks for usage in functional components, which are
 // auto-generated based on the defined endpoints
-export const { useGetAllUsersQuery, useGetAllFilesQuery } = reportingAPI;
+export const { useGetAllUsersQuery, useGetAllFilesQuery, useGetFileCountQuery } = reportingAPI;
