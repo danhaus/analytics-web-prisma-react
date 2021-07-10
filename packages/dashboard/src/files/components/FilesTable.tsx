@@ -36,7 +36,7 @@ const FilesTable = () => {
       </Thead>
       <Tbody>
         {files.map((f) => (
-          <FilesTableRow {...f} />
+          <FilesTableRow key={f.uuid} {...f} />
         ))}
       </Tbody>
       <Tfoot>

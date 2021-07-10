@@ -33,7 +33,7 @@ const UsersTable = () => {
       </Thead>
       <Tbody>
         {users.map((u) => (
-          <UserTableRow id={u.id} name={u.name} countryOfOrigin={u.countryOfOrigin} />
+          <UserTableRow key={u.id} id={u.id} name={u.name} countryOfOrigin={u.countryOfOrigin} />
         ))}
       </Tbody>
       <Tfoot>
