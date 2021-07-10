@@ -1,5 +1,5 @@
 import { FileType } from '@prisma/client';
-import { seed } from '../../prisma/seed';
+import { testingSeed } from '../../prisma/seed';
 import prisma from '../../client';
 import {
   calculateAverageFileSize,
@@ -10,7 +10,7 @@ import {
 
 describe('reporting functionality', () => {
   beforeAll(async () => {
-    await seed();
+    await testingSeed();
   });
 
   afterAll(async () => {
