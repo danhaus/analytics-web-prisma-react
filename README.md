@@ -5,7 +5,8 @@ This sample project is a fullstack web application that serves as an analytics d
 ## Tech stack
 * [Prisma](https://www.prisma.io/) with PostreSQL database for data storage
 * [React](https://reactjs.org/) for the frontend
-* [Chakra UI](https://chakra-ui.com/) as a compoent library
+* [Chakra UI](https://chakra-ui.com/) as a component library
+* [RTK Query](https://redux-toolkit.js.org/rtk-query/overview) for data fetching and caching
 * [Jest](https://jestjs.io/) for testing
 * [TypeScript](https://www.typescriptlang.org/) throughout the project
 * [ESLint](https://eslint.org/), [Prettier](https://prettier.io/), and [Husky](https://typicode.github.io/husky/#/) for code quality
@@ -16,6 +17,7 @@ This sample project is a fullstack web application that serves as an analytics d
 2. Create `.env` file inside `packages/server` with `DATABASE_URL` that stores the URL of your running PostreSQL instance (if you don't already have PostreSQL, you can download it from [the official web](https://www.postgresql.org/download/))
 3. Install `dotenv-cli` by running `yarn global add dotenv-cli`
 4. Run `yarn` from the project root to install the dependencies
+5. Start your PostreSQL server
 
 
 ## Running the project
@@ -35,7 +37,7 @@ This project has been set up as monorepo with [yarn workspaces](https://classic.
 
 Functional programming has been used where possible to provide clean and easily readable code. TypeScript provides static types checks. In addition, code quality is maintained with ESLint, Prettier, and Husky.
 
-### Server inside `packages/server`
+### Server in `packages/server`
 
 At the very core, there's `prisma/schema.prisma` file that defines the data model and hence the database structure. Prisma Client, which is automatically generated, encapsulates TypeScript types derived from the data model. These types are reused across the project, including the frontend, for consistency.
 
@@ -57,8 +59,35 @@ The following REST API is made available by the server
 | POST    | /api/files                                | create new file                                  |
 | GET     | /api/files                                | get all files                                    |
 
-## Test setup
-* Install [Docker](https://docs.docker.com/get-docker/) and [Docker Compose](https://docs.docker.com/compose/install/)
+### Dashboard/client in `packages/dashboard`
 
+`reportingService.ts` in `src/services` defines some of the endpoints provided by the server with the RTK Query framework, and exports hooks to access the data. There are three domains: users, files, and reports, each of which has its own directory with subdirectories for components, pages, etc. The menu component is in `src/navigation` and it also contains the toggle to switch between the light and dark modes. `src/types/serverTypes.ts` re-exports types from the server for reuse in the frontend.
 
+## Testing
 
+All the services from `packages/server/src/services` are tested as integration tests in `packages/server/src/__tests__`. The tests are run in a Docker container with a separate instance of the PostreSQL server. There's only one sample unit test in `packages/server/src/services/user.service.test.ts`, which use a mock of Prisma Client, hence it doesn't connect to a database.
+
+### Setup
+* Unit tests should work out of box
+* For integration tests, install [Docker](https://docs.docker.com/get-docker/) and [Docker Compose](https://docs.docker.com/compose/install/), and also copy the content of `.env.test.example` in `.env.test` file inside `packages/server`: this sets the testing database URL.
+
+### Run tests
+1. Navigate to `packages/server` with your terminal
+2. Run `yarn test:unit` for unit tests
+3. Run `yarn test:integration` for integration tests. The command first sets up the Docker instance, initialises the database, and then runs the tests.
+4. `yarn docker:down` stops and removes the Docker container.
+
+## Possible improvements
+
+### Testing
+* More unit tests, especially for the validation logic in server controllers.
+* Test the server as a whole system with automated API tests, which can be implemented with [Postman API test](https://www.postman.com/api-platform/api-testing/).
+* Frontend test with [Testing Library](https://testing-library.com/), for example.
+* E2E tests with tools like [Cypress](https://www.cypress.io/)
+
+### Filtering by date
+* Add `createdAdd` attribute to the prisma schema like `createdAt DateTime @default(now())`
+* When querying the API, specify data range via URL query parameters. Then uses these when querying the database.
+
+### Pagination
+* Via the `skip` and `take` Prisma parameters when querying the Prisma Client as described [here](https://www.prisma.io/docs/concepts/components/prisma-client/pagination).
