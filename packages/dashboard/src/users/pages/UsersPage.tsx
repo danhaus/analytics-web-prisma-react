@@ -4,7 +4,7 @@ import UsersTable from "../components/UsersTable";
 
 const UsersPage = () => {
   return (
-    <Box h="100vh">
+    <Box h="100vh" align={'center'}>
       <UsersTable/>
     </Box>
   );

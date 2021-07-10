@@ -4,7 +4,7 @@ import FilesTable from './components/FilesTable';
 
 const FilesPage = () => {
   return (
-    <Box h="100vh">
+    <Box h="100vh" align="center">
       <FilesTable />
     </Box>
   );

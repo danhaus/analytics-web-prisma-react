@@ -29,7 +29,7 @@ const FilesTable = () => {
   const files = data ? data : [];
 
   return (
-    <Table variant="simple" colorScheme="blackAlpha">
+    <Table variant="simple" colorScheme="telegram" w={'800px'}>
       <TableCaption>List of files</TableCaption>
       <Thead>
         <TableHeader />
