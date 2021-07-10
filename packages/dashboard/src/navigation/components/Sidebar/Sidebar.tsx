@@ -1,6 +1,6 @@
 // Take from https://chakra-templates.dev/navigation/sidebar
 // Modified by Daniel Hausner
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useState } from "react";
 import {
   Box,
   CloseButton,
@@ -18,16 +18,22 @@ import MobileNav from './MobileNav';
 import NavItem from './NavItem';
 import { ColorModeSwitcher } from '../../../ColorModeSwitcher';
 
+export enum NavItemName {
+  HOME = 'Home',
+  USERS = 'Users',
+  FILES = 'Files',
+}
+
 interface LinkItemProps {
-  name: string;
+  name: NavItemName;
   icon: IconType;
   path: string;
 }
 
 const LinkItems: Array<LinkItemProps> = [
-  { name: 'Home', icon: FiHome, path: '/' },
-  { name: 'Users', icon: FiUsers, path: '/users' },
-  { name: 'Files', icon: FiFile, path: '/files' },
+  { name: NavItemName.HOME, icon: FiHome, path: '/' },
+  { name: NavItemName.USERS, icon: FiUsers, path: '/users' },
+  { name: NavItemName.FILES, icon: FiFile, path: '/files' },
 ];
 
 export default function SimpleSidebar({ children }: { children: ReactNode }) {
@@ -50,7 +56,7 @@ export default function SimpleSidebar({ children }: { children: ReactNode }) {
       </Drawer>
       {/* mobilenav */}
       <MobileNav display={{ base: 'flex', md: 'none' }} onOpen={onOpen} />
-      <Box ml={{ base: 0, md: 60 }} p="4" >
+      <Box ml={{ base: 0, md: 60 }} p="4">
         {children}
       </Box>
     </Box>
@@ -62,6 +68,8 @@ interface SidebarProps extends BoxProps {
 }
 
 const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
+  const [activeNavItem, setActiveNavItem] = useState(NavItemName.HOME);
+
   return (
     <Box
       bg={useColorModeValue('white', 'gray.900')}
@@ -80,7 +88,7 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
         <CloseButton display={{ base: 'flex', md: 'none' }} onClick={onClose} />
       </Flex>
       {LinkItems.map((link) => (
-        <NavItem key={link.name} icon={link.icon} path={link.path}>
+        <NavItem key={link.name} icon={link.icon} path={link.path} isActive={link.name === activeNavItem} onClick={() => setActiveNavItem(link.name)}>
           {link.name}
         </NavItem>
       ))}
