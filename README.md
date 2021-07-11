@@ -87,7 +87,7 @@ All the services from `packages/server/src/services` are tested as integration t
 
 ### Filtering by date
 * Add `createdAdd` attribute to the prisma schema like `createdAt DateTime @default(now())`
-* When querying the API, specify data range via URL query parameters. Then uses these when querying the database.
+* When querying the API, specify data range via URL query parameters. Then use these when querying the database.
 
 ### Pagination
 * Via the `skip` and `take` Prisma parameters when querying the Prisma Client as described [here](https://www.prisma.io/docs/concepts/components/prisma-client/pagination).
