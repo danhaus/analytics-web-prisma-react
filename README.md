@@ -1,4 +1,4 @@
-# Analytics dashboard with Prisma, Express, and React
+# Analytics web app with Prisma, Express, and React
 
 This sample project is a fullstack web application that serves as an analytics dashboard for file uploads. The dashboard displays statistics about the users and files they uploaded to the platform.
 
