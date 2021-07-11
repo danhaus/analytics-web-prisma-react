@@ -84,10 +84,10 @@ All the services from `packages/server/src/services` are tested as integration t
 * More unit tests, especially for the validation logic in server controllers.
 * Test the server as a whole system with automated API tests, which can be implemented with [Postman API test tools](https://www.postman.com/api-platform/api-testing/).
 * Frontend test with [Testing Library](https://testing-library.com/), for example.
-* E2E tests with tools like [Cypress](https://www.cypress.io/)
+* E2E tests with tools like [Cypress](https://www.cypress.io/).
 
 ### Filtering by date
-* Add `createdAdd` attribute to the prisma schema like `createdAt DateTime @default(now())`
+* Add `createdAdd` attribute to the prisma schema like `createdAt DateTime @default(now())`.
 * When querying the API, specify data range via URL query parameters. Then use these when querying the database.
 
 ### Pagination
