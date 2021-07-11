@@ -18,6 +18,7 @@ This sample project is a fullstack web application that serves as an analytics d
 3. Install `dotenv-cli` by running `yarn global add dotenv-cli`
 4. Run `yarn` from the project root to install the dependencies
 5. Start your PostreSQL server
+6. Run `yarn migrate` from the project root. This sets up the database and initialises it with sample data. If the database already exists, it resets it.
 
 
 ## Running the project

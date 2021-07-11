@@ -8,6 +8,7 @@
     "packages/*"
   ],
   "scripts": {
+    "migrate": "yarn workspace @analytics-web-prisma-react/server prisma:migrate:reset",
     "server": "yarn workspace @analytics-web-prisma-react/server dev",
     "dashboard": "yarn workspace @analytics-web-prisma-react/dashboard start",
     "eslint": "eslint 'packages/**/src/**/*.ts'",
