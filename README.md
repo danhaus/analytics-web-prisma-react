@@ -91,3 +91,12 @@ All the services from `packages/server/src/services` are tested as integration t
 
 ### Pagination
 * Via the `skip` and `take` Prisma parameters when querying the Prisma Client as described [here](https://www.prisma.io/docs/concepts/components/prisma-client/pagination).
+
+
+## Common issues/FAQ
+
+#### `yarn server` results in errors about `dotenv`
+* Make sure that the correct dotenv binary is executed. There may be other global dotenv installations, for example, `pip` and `conda` also have a `dotenv` package. On a mac, you can check which package is executed by running `where dotenv`. Then either delete the other `dotenv` packages or explicitly specify the binary in `packages/server/package.json` scripts.
+
+#### Database has not been seeded/I want to reset the database to initial state.
+* From `packages/server` run `yarn prisma:seed` to manually seed the database. You can also run `npx prisma migrate reset` to reset the database to initial state (this runs the seed automatically).
