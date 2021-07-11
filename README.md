@@ -75,7 +75,7 @@ All the services from `packages/server/src/services` are tested as integration t
 ### Run tests
 1. Navigate to `packages/server` with your terminal
 2. Run `yarn test:unit` for unit tests
-3. Run `yarn test:integration` for integration tests. The command first sets up the Docker instance, initialises the database, and then runs the tests.
+3. Run `yarn docker:up` and then `yarn test:integration` for integration tests. The commands first set up the Docker instance, initialises the database, and then runs the tests.
 4. `yarn docker:down` stops and removes the Docker container.
 
 ## Possible improvements
