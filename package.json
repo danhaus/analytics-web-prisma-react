@@ -1,5 +1,5 @@
 {
-  "name": "analytics-dashboard-express-react",
+  "name": "analytics-web-prisma-react",
   "version": "1.0.0",
   "author": "Daniel Hausner",
   "license": "MIT",
@@ -8,8 +8,8 @@
     "packages/*"
   ],
   "scripts": {
-    "server": "yarn workspace @analytics-dashboard-express-react/server dev",
-    "dashboard": "yarn workspace @analytics-dashboard-express-react/dashboard start",
+    "server": "yarn workspace @analytics-web-prisma-react/server dev",
+    "dashboard": "yarn workspace @analytics-web-prisma-react/dashboard start",
     "eslint": "eslint 'packages/**/src/**/*.ts'",
     "eslint:fix": "eslint --fix 'packages/**/src/**/*.ts'",
     "prepare": "husky install"
